@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +11,11 @@ import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClientesService } from './clientes/clientes.service';
 import { FormComponent } from './clientes/form.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeES from '@angular/common/locales/es';
+
+registerLocaleData(localeES, "es");
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full' },
@@ -36,7 +41,8 @@ const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    ClientesService
+    ClientesService,
+    {provide: LOCALE_ID, useValue: 'es'}
   ],
   bootstrap: [AppComponent]
 })
