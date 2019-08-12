@@ -11,6 +11,7 @@ import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClientesService } from './clientes/clientes.service';
 import { FormComponent } from './clientes/form.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
@@ -21,6 +22,7 @@ const ROUTES: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full' },
   { path: 'directivas', component: DirectivaComponent },
   { path: 'clientes', component: ClientesComponent },
+  { path: 'clientes/page/:page', component: ClientesComponent },
   { path: 'clientes/form', component: FormComponent },
   { path: 'clientes/form/:id', component: FormComponent }
 ];
@@ -32,7 +34,8 @@ const ROUTES: Routes = [
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

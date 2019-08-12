@@ -1,38 +1,38 @@
-import { Injectable } from "@angular/core";
-import { Cliente } from "./cliente";
+import { Injectable } from '@angular/core';
+import { Cliente } from './cliente';
 // import { CLIENTES } from './clientes.json';
-import { Observable, of, throwError } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map, catchError, tap } from "rxjs/operators";
-import Swal from "sweetalert2";
-import { Router } from "@angular/router";
-import { formatDate, DatePipe } from "@angular/common";
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, catchError, tap } from 'rxjs/operators';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { formatDate, DatePipe } from '@angular/common';
 
 @Injectable({
-	providedIn: "root"
+	providedIn: 'root'
 })
 export class ClientesService {
-	private urlEndpoint = "http://localhost:8080/api/clientes";
+	private urlEndpoint = 'http://localhost:8080/api/clientes';
 	private httpHeaders = new HttpHeaders({
-		"Content-Type": "application/json"
+		'Content-Type': 'application/json'
 	});
 
 	constructor(private http: HttpClient, private router: Router) {}
 
-	getClientes(): Observable<Cliente[]> {
+	getClientes(page: number): Observable<any> {
 		// return of(CLIENTES);
 		// return this.http.get<Cliente[]>(this.urlEndpoint);
-		return this.http.get(this.urlEndpoint).pipe(
-			tap(response => {
-        let clientes = response as Cliente[];
-        console.log('ClienteService: tap 1.');        
-				clientes.forEach(cliente => {
-				console.log(cliente.nombre);
+		return this.http.get(this.urlEndpoint + '/page/' + page).pipe(
+			tap((response: any) => {
+        // let clientes = response as Cliente[];
+        console.log('ClienteService: tap 1.');
+				(response.content as Cliente[]).forEach(cliente => {
+					console.log(cliente.nombre);
 				});
 			}),
-			map(response => {
-				let clientes = response as Cliente[];
-				return clientes.map(cliente => {
+			map((response: any) => {
+				// let clientes = response as Cliente[];
+				(response.content as Cliente[]).map(cliente => {
 					cliente.nombre = cliente.nombre.toUpperCase();
 					// cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'en-US');
 					// let datePipe = new DatePipe('es');
@@ -40,10 +40,11 @@ export class ClientesService {
 					// cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
 					return cliente;
 				});
+				return response;
 			}),
 			tap(response => {
-          console.log("ClienteService: tap 2.");
-				  response.forEach(cliente => {
+          console.log('ClienteService: tap 2.');
+				  (response.content as Cliente[]).forEach(cliente => {
 					console.log(cliente.nombre);
 				});
 			})
@@ -60,7 +61,7 @@ export class ClientesService {
 						return throwError(e);
 					}
 					console.error(e.error);
-					Swal.fire(e.error.mensaje, e.error.error, "error");
+					Swal.fire(e.error.mensaje, e.error.error, 'error');
 					return throwError(e);
 				})
 			);
@@ -69,12 +70,12 @@ export class ClientesService {
 	getCliente(id: any): Observable<Cliente> {
 		return this.http.get<Cliente>(`${this.urlEndpoint}/${id}`).pipe(
 			catchError(e => {
-				this.router.navigate(["/clientes"]);
+				this.router.navigate(['/clientes']);
 				console.error(e.error.mensaje);
 				Swal.fire(
-					"Error al cargar el cliente",
+					'Error al cargar el cliente',
 					e.error.mensaje,
-					"error"
+					'error'
 				);
 				return throwError(e);
 			})
@@ -91,9 +92,9 @@ export class ClientesService {
 					if (e.status === 400) {
 						return throwError(e);
 					}
-					this.router.navigate(["/clientes"]);
+					this.router.navigate(['/clientes']);
 					console.error(e.error.mensaje);
-					Swal.fire(e.error.mensaje, e.error.error, "error");
+					Swal.fire(e.error.mensaje, e.error.error, 'error');
 					return throwError(e);
 				})
 			);
@@ -106,9 +107,9 @@ export class ClientesService {
 			})
 			.pipe(
 				catchError(e => {
-					this.router.navigate(["/clientes"]);
+					this.router.navigate(['/clientes']);
 					console.error(e.error.mensaje);
-					Swal.fire(e.error.mensaje, e.error.error, "error");
+					Swal.fire(e.error.mensaje, e.error.error, 'error');
 					return throwError(e);
 				})
 			);
