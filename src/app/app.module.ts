@@ -11,6 +11,7 @@ import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClientesService } from './clientes/clientes.service';
 import { FormComponent } from './clientes/form.component';
+import { DetalleClienteComponent } from './clientes/detalle-cliente/detalle-cliente.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 
 import { registerLocaleData } from '@angular/common';
@@ -27,7 +28,8 @@ const ROUTES: Routes = [
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/page/:page', component: ClientesComponent },
   { path: 'clientes/form', component: FormComponent },
-  { path: 'clientes/form/:id', component: FormComponent }
+  { path: 'clientes/form/:id', component: FormComponent },
+  { path: 'clientes/ver/:id', component: DetalleClienteComponent }
 ];
 
 @NgModule({
@@ -38,7 +40,8 @@ const ROUTES: Routes = [
     DirectivaComponent,
     ClientesComponent,
     FormComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DetalleClienteComponent
   ],
   imports: [
     BrowserModule,
