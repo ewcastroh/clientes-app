@@ -13,7 +13,7 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>NOMBRE</th>
             <th>APELLIDO</th>
             <th>EMAIL</th>
@@ -26,9 +26,13 @@
           <tr *ngFor="let cliente of clientes">
             <td>
               <!-- <button type="button" name="ver" [routerLink]="['/clientes/ver', cliente.id]" routerLinkActive="router-link-active" class="btn btn-success"> -->
-              <button type="button" name="ver" (click)="abrirModal(cliente)" class="btn btn-success">
+              <!-- <button type="button" name="ver" (click)="abrirModal(cliente)" class="btn btn-success">
                 {{ cliente.id }}
-              </button>
+              </button> -->
+              <img *ngIf="cliente?.foto" (click)="abrirModal(cliente)" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}"
+                class="img-thumbnail rounded" style="width: 64px; cursor: pointer">
+              <img *ngIf="!cliente?.foto" (click)="abrirModal(cliente)" src="http://localhost:8080/images/no-usuario.png" alt="Sin foto"
+                class="img-thumbnail rounded" style="width: 64px; cursor: pointer">
             </td>
             <td>{{ cliente.nombre }}</td>
             <td>{{ cliente.apellido | uppercase }}</td>

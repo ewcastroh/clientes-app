@@ -4,6 +4,7 @@ import { ClientesService } from './../clientes.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HttpEventType } from '@angular/common/http';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -18,7 +19,8 @@ export class DetalleClienteComponent implements OnInit {
   private progreso = 0;
 
   constructor(private clienteService: ClientesService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private modalService: ModalService) { }
 
   ngOnInit() {
     /* this.activatedRoute.paramMap.subscribe(params => {
@@ -53,11 +55,18 @@ export class DetalleClienteComponent implements OnInit {
           } else if (event.type === HttpEventType.Response) {
             let response: any = event.body;
             this.cliente = response.cliente as Cliente;
+            this.modalService.notificarUpload.emit(this.cliente);
             // this.cliente = cliente;
             Swal.fire('La foto se ha subido correctamente!', response.mensaje, 'success');
           }
         });
     }
+  }
+
+  cerrarModal() {
+    this.modalService.cerrarModal();
+    this.fotoSeleccionada = null;
+    this.progreso = 0;
   }
 
 }

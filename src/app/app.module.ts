@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
-registerLocaleData(localeES, "es");
+registerLocaleData(localeES, 'es');
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full' },
