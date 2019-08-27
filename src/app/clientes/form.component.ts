@@ -3,6 +3,7 @@ import { Cliente } from './cliente';
 import { ClientesService } from './clientes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Region } from './region';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 export class FormComponent implements OnInit {
 
   private cliente: Cliente = new Cliente();
+  private regiones: Region[];
   private titulo = 'Crear Cliente';
   private errors: string[];
 
@@ -21,6 +23,14 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.cargarCliente();
+    this.cargarRegiones();
+    /* this.activatedRoute.paramMap.subscribe(params => {
+      const id = +params.get('id');
+      if (id) {
+        this.clienteService.getCliente(id).subscribe(cliente => this.cliente = cliente);
+      }
+    });
+    this.clienteService.getRegiones().subscribe(regiones => this.regiones = regiones); */
   }
 
   cargarCliente(): void {
@@ -30,6 +40,11 @@ export class FormComponent implements OnInit {
         this.clienteService.getCliente(id).subscribe(cliente => this.cliente = cliente);
       }
     });
+    // this.clienteService.getRegiones().subscribe(regiones => this.regiones = regiones);
+  }
+
+  cargarRegiones(): void {
+    this.clienteService.getRegiones().subscribe(regiones => this.regiones = regiones);
   }
 
   public create(): void {
@@ -50,6 +65,7 @@ export class FormComponent implements OnInit {
   }
 
   update(): void {
+    console.log(this.cliente);
     this.clienteService.update(this.cliente)
       .subscribe(response => {
         this.router.navigate(['/clientes']);
@@ -60,5 +76,12 @@ export class FormComponent implements OnInit {
         console.error('Código del error desde el Backend: ' + err.status);
         console.error(err.error.error);
       });
+  }
+
+  compararRegion(o1: Region, o2: Region): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+    return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.id === o2.id;
   }
 }
