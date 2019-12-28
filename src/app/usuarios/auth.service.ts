@@ -38,10 +38,10 @@ export class AuthService {
     const credenciales = btoa('clientes-app' + ':' + '12345');
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + credenciales
+      Authorization: 'Basic ' + credenciales
     });
 
-    let params = new URLSearchParams();
+    const params = new URLSearchParams();
     params.set('grant_type', 'password');
     params.set('username', usuario.username);
     params.set('password', usuario.password);
@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   guardarUsuario(accessToken: string): void {
-    let payload = this.obtenerDatosToken(accessToken);
+    const payload = this.obtenerDatosToken(accessToken);
     this._usuario = new Usuario();
     this._usuario.nombre = payload.nombre;
     this._usuario.apellido = payload.apellido;
@@ -74,7 +74,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    let payload = this.obtenerDatosToken(this.token);
+    const payload = this.obtenerDatosToken(this.token);
     console.log('PAYLOAD!');
     console.log(payload);
     if (payload != null && payload.user_name && payload.user_name.length > 0) {

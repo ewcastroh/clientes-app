@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    let username = this.authService.usuario.username;
+    const username = this.authService.usuario.username;
     this.authService.logout();
     Swal.fire('Logout', `${username} has cerrado sesión con éxito`, 'success');
     this.router.navigate(['/login']);

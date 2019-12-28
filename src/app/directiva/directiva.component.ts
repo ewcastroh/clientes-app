@@ -19,7 +19,7 @@ export class DirectivaComponent implements OnInit {
 
   toogleBotonMostrarOcultar(): void {
     this.habilitar = !this.habilitar;
-    if(this.habilitar === true) {
+    if (this.habilitar === true) {
       this.mensajeBoton = 'Ocultar';
     } else {
       this.mensajeBoton = 'Mostrar';

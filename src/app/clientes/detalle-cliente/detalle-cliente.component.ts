@@ -55,7 +55,7 @@ export class DetalleClienteComponent implements OnInit {
           if (event.type === HttpEventType.UploadProgress) {
             this.progreso = Math.round((event.loaded / event.total) * 100);
           } else if (event.type === HttpEventType.Response) {
-            let response: any = event.body;
+            const response: any = event.body;
             this.cliente = response.cliente as Cliente;
             this.modalService.notificarUpload.emit(this.cliente);
             // this.cliente = cliente;

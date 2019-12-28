@@ -167,7 +167,7 @@ export class ClientesService {
 	}
 
 	subirFoto(archivo: File, id): Observable<HttpEvent<{}>> {
-		let formData = new FormData();
+		const formData = new FormData();
 		formData.append('archivo', archivo);
 		formData.append('id', id);
 

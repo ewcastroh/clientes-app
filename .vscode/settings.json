@@ -1,5 +1,5 @@
 {
 	"editor.foldingStrategy": "indentation",
 	"editor.wrappingIndent": "indent",
-	"html.format.indentInnerHtml": true
+    "html.format.indentInnerHtml": true
 }

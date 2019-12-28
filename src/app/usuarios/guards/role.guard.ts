@@ -21,7 +21,7 @@ export class RoleGuard implements CanActivate {
       return false;
     }
 
-    let role = next.data['role'] as string;
+    const role = next.data.role as string;
     console.log(role);
 
     if (this.authService.hasRole(role)) {
@@ -31,5 +31,5 @@ export class RoleGuard implements CanActivate {
     this.router.navigate(['/clientes']);
     return false;
   }
-  
+
 }
