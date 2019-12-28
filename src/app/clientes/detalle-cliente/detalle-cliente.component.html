@@ -60,6 +60,7 @@
 							<th>Fecha</th>
 							<th>Total</th>
 							<th>Detalle</th>
+							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -70,6 +71,9 @@
 							<td>{{factura.total}}</td>
 							<td>
 								<button class="btn btn-primary btn-sm" type="button" [routerLink]="['/facturas', factura.id]" routerLinkActive="router-link-active" >Ver</button>
+							</td>
+							<td>
+								<button class="btn btn-danger btn-sm" type="button" (click)="delete(factura)" >Eliminar</button>
 							</td>
 						</tr>
 					</tbody>
