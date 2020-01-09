@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,7 +17,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { LoginComponent } from './usuarios/login.component';
 import { AuthGuard } from './usuarios/guards/auth.guard';
@@ -63,7 +63,11 @@ const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatMomentDateModule
+	MatMomentDateModule,
+	MatInputModule,
+	MatFormFieldModule,
+	ReactiveFormsModule,
+	MatAutocompleteModule
   ],
   providers: [
     ClientesService,
