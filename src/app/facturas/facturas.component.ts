@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
 })
 export class FacturasComponent implements OnInit {
 
-	titulo = 'Nueva factura';
+	titulo = 'New Invoice';
 	factura: Factura = new Factura();
 
 	autoCompleteControl = new FormControl();

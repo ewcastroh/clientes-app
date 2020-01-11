@@ -25,12 +25,12 @@
                   <div class="custom-file">
                     <input (change)="seleccionarFoto($event)" type="file" class="custom-file-input" id="inputGroupFile04"
                       aria-describedby="inputGroupFileAddon04">
-                    <label class="custom-file-label" for="inputGroupFile04">Seleccionar foto</label>
+                    <label class="custom-file-label" for="inputGroupFile04">Choose picture...</label>
                   </div>
                   <div class="input-group-append">
                     <button (click)="subirFoto()" [disabled]="!fotoSeleccionada" class="btn btn-outline-secondary" type="button"
                       id="inputGroupFileAddon04">
-                      Subir foto
+                      Upload
                     </button>
                   </div>
                 </div>
@@ -51,22 +51,22 @@
 			<div class="row">
 				<td>
 					<button class="btn btn-success btn-sm" [routerLink]="['/facturas/form', cliente.id]"
-						routerLinkActive="router-link-active">Crear Factura</button>
+						routerLinkActive="router-link-active">Create invoice</button>
 				</td>
 			</div>
 			<div class="row">
 				<div class="alert alert-info my-4" *ngIf="cliente.facturas.length == 0">
-					No hay facturas asociadas al cliente {{cliente.nombre}} {{cliente.apellido}}.
+					There aren't asociated invoces to {{cliente.nombre}} {{cliente.apellido}}.
 				</div>
 				<table class="table table-bordered table-striped my-4" *ngIf="cliente.facturas.length > 0">
 					<thead>
 						<tr>
-							<th>Folio</th>
-							<th>Descripción</th>
-							<th>Fecha</th>
+							<th>Invoice</th>
+							<th>Description</th>
+							<th>Created at</th>
 							<th>Total</th>
-							<th>Detalle</th>
-							<th>Eliminar</th>
+							<th>Detail</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,10 +76,10 @@
 							<td>{{factura.createAt}}</td>
 							<td>{{factura.total}}</td>
 							<td>
-								<button class="btn btn-primary btn-sm" type="button" [routerLink]="['/facturas', factura.id]" routerLinkActive="router-link-active" >Ver</button>
+								<button class="btn btn-primary btn-sm" type="button" [routerLink]="['/facturas', factura.id]" routerLinkActive="router-link-active" >See</button>
 							</td>
 							<td>
-								<button class="btn btn-danger btn-sm" type="button" (click)="delete(factura)" >Eliminar</button>
+								<button class="btn btn-danger btn-sm" type="button" (click)="delete(factura)" >Delete</button>
 							</td>
 						</tr>
 					</tbody>

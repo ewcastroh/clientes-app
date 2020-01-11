@@ -8,7 +8,7 @@
 
   <li [ngClass]="paginador.first ? 'disabled page-item' : 'page-item'">
     <a class="page-link" [routerLink]="['/clientes/page', 0]">
-      Primera
+      First
     </a>
   </li>
 
@@ -19,7 +19,7 @@
 
   <li [ngClass]="paginador.last ? 'disabled page-item': 'page-item'">
     <a class="page-link" [routerLink]="['/clientes/page', paginador.totalPages-1]">
-      Última
+      Last
     </a>
   </li>
 

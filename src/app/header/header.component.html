@@ -11,10 +11,10 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="[ '/directivas' ]">Directivas</a>
+        <a class="nav-link" [routerLink]="[ '/directivas' ]">Directives</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="[ '/clientes' ]">Clientes</a>
+        <a class="nav-link" [routerLink]="[ '/clientes' ]">Clients</a>
       </li>
     </ul>
     <ul class="navbar-nav navbar-right">
@@ -24,7 +24,7 @@
           aria-haspopup="true" aria-expanded="false">
           {{authService.usuario.username}}
         </a>
-      
+
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <button (click)="logout()" class="dropdown-item" type="submit">Sign Out!</button>
         </div>

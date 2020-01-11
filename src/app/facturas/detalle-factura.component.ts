@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DetalleFacturaComponent implements OnInit {
 
 	factura: Factura;
-	titulo = 'Factura';
+	titulo = 'Invoice';
 
 	constructor(private facturaService: FacturaService,
 		private activateRoute: ActivatedRoute) { }

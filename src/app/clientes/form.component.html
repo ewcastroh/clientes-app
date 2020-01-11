@@ -14,34 +14,34 @@
 
     <form #clienteForm="ngForm">
       <div class="form-group row">
-        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+        <label for="nombre" class="col-form-label col-sm-2">Name</label>
         <div class="col-sm-6">
           <!-- <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required minlength="4" #nombre="ngModel"> -->
           <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" #nombre="ngModel">
           <ng-container *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
             <ng-container *ngIf="nombre.errors.required">
               <div class="alert alert-danger">
-                El nombre es requerido.
+                Name is required.
               </div>
             </ng-container>
             <ng-container *ngIf="nombre.errors.minlength">
               <div class="alert alert-danger">
-                El nombre debe contener al menos 4 caracteres.
+                Name must contain at least 4 characters.
               </div>
             </ng-container>
-          </ng-container>          
+          </ng-container>
         </div>
       </div>
-      
+
       <div class="form-group row">
-        <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
+        <label for="apellido" class="col-form-label col-sm-2">Lastname</label>
         <div class="col-sm-6">
           <!-- <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" required #apellido="ngModel"> -->
           <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" #apellido="ngModel">
           <ng-container *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
             <ng-container *ngIf="apellido.errors.required">
               <div class="alert alert-danger">
-                El apellido es requerido.
+                Lastame is required.
               </div>
             </ng-container>
           </ng-container>
@@ -56,12 +56,12 @@
           <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
             <ng-container *ngIf="email.errors.required">
               <div class="alert alert-danger">
-                El email es requerido.
+                Email is required.
               </div>
             </ng-container>
             <ng-container *ngIf="email.errors.email">
               <div class="alert alert-danger">
-                El email debe tener un formato valido.
+                Email must have a valid format.
               </div>
             </ng-container>
           </ng-container>
@@ -69,7 +69,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="createAt" class="col-form-label col-sm-2">Fecha</label>
+        <label for="createAt" class="col-form-label col-sm-2">Creation Date</label>
         <div class="col-sm-6">
           <!-- <input type="text" class="form-control" [(ngModel)]="cliente.createAt" name="createAt" required #createAt="ngModel"> -->
           <input [matDatepicker]="myDatepicker" class="form-control" [(ngModel)]="cliente.createAt" name="createAt" #createAt="ngModel" style="display:inline; width:300px;">
@@ -78,7 +78,7 @@
           <ng-container *ngIf="createAt.invalid && (createAt.dirty || createAt.touched)">
             <ng-container *ngIf="createAt.errors.required">
               <div class="alert alert-danger">
-                La fecha es requerida.
+                Creation Date is reqired.
               </div>
             </ng-container>
           </ng-container>
@@ -86,7 +86,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="region" class="col-form-label col-sm-2">Región</label>
+        <label for="region" class="col-form-label col-sm-2">Region</label>
         <div class="col-sm-6">
           <!-- <input type="text" class="form-control" [(ngModel)]="cliente.region" name="region" required #region="ngModel"> -->
           <select [compareWith]="compararRegion" class="form-control" [(ngModel)]="cliente.region" name="region" #region="ngModel" style="width:430px;">
@@ -96,7 +96,7 @@
           <ng-container *ngIf="region.invalid && (region.dirty || region.touched)">
             <ng-container *ngIf="region.errors.required">
               <div class="alert alert-danger">
-                La fecha es requerida.
+                Region is required.
               </div>
             </ng-container>
           </ng-container>
@@ -106,11 +106,11 @@
       <div class="form-group row">
         <div class="col-sm-6">
           <ng-container *ngIf="!cliente.id; else elseTemplate">
-              <button class="btn btn-primary" role="button" (click)="create()" [disabled]="!clienteForm.form.valid">Crear</button>
+              <button class="btn btn-primary" role="button" (click)="create()" [disabled]="!clienteForm.form.valid">Create</button>
           </ng-container>
           <ng-template #elseTemplate>
-            <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!clienteForm.form.valid">Actualizar</button>
-          </ng-template>          
+            <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!clienteForm.form.valid">Update</button>
+          </ng-template>
         </div>
       </div>
 

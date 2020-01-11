@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit {
 
-  title = 'App Angular - Spring';
+  title = 'ManagementApp';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     const username = this.authService.usuario.username;
     this.authService.logout();
-    Swal.fire('Logout', `${username} has cerrado sesión con éxito`, 'success');
+    Swal.fire('Logout', `${username} successful`, 'success');
     this.router.navigate(['/login']);
   }
 
