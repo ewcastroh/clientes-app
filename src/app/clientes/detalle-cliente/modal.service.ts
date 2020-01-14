@@ -5,7 +5,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 })
 export class ModalService {
 
-  private modal = false;
+  public modal = false;
   private _notificarUpload = new EventEmitter<any>();
 
   constructor() { }
