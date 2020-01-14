@@ -23,8 +23,8 @@ export class DetalleClienteComponent implements OnInit {
 
 	constructor(private clienteService: ClientesService,
 		private activatedRoute: ActivatedRoute,
-		private modalService: ModalService,
-		private authService: AuthService,
+		public modalService: ModalService,
+		public authService: AuthService,
 		private facturaService: FacturaService) { }
 
 	ngOnInit() {
