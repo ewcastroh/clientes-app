@@ -18,8 +18,8 @@ export class DetalleClienteComponent implements OnInit {
 
 	@Input() cliente: Cliente;
 	titulo = 'Client details';
-	private fotoSeleccionada: File;
-	private progreso = 0;
+	public fotoSeleccionada: File;
+	public progreso = 0;
 
 	constructor(private clienteService: ClientesService,
 		private activatedRoute: ActivatedRoute,
