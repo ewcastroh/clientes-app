@@ -9,12 +9,19 @@ import { Router } from '@angular/router';
 import { formatDate, DatePipe } from '@angular/common';
 import { Region } from './region';
 import { AuthService } from './../usuarios/auth.service';
+import { URL_BACKEND } from '../config/config';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ClientesService {
-	private urlEndpoint = 'http://localhost:8080/api/clientes';
+
+	// Local
+	// private urlEndpoint = 'http://localhost:8080/api/clientes';
+
+	// Firebase
+	private urlEndpoint = URL_BACKEND + '/api/clientes';
+
 	// private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
 	constructor(private http: HttpClient, private router: Router/*,  private authService: AuthService */) {}

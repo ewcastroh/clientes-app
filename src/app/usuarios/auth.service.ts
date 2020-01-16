@@ -2,11 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from './usuario';
+import { URL_BACKEND } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+	// Local
+	// private urlEndpoint = 'http://localhost:8080/oauth/token';
+
+	// Firebase
+	private urlEndpoint = URL_BACKEND + '/oauth/token';
 
   private _usuario: Usuario;
   private _token: string;
@@ -34,7 +41,7 @@ export class AuthService {
   }
 
   login(usuario: Usuario): Observable<any> {
-    const urlEndpoint = 'http://localhost:8080/oauth/token';
+	const urlEndpoint = this.urlEndpoint;
     const credenciales = btoa('clientes-app' + ':' + '12345');
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
